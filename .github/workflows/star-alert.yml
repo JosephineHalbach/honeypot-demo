@@ -1,0 +1,16 @@
+name: Star Alert
+
+on:
+  watch:
+    types: [started]
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify on new star
+        run: |
+          echo "Repository starred by ${{ github.actor }} at ${{ github.event.repository.full_name }}"
+          # You can add a webhook call here, e.g.:
+          # curl -X POST -H "Content-Type: application/json" \
+          # -d '{"user": "${{ github.actor }}"}' https://your-webhook-url
